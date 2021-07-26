@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: migration-charts
-        image: migration-charts:latest
+        image: image-registry.openshift-image-registry.svc:5000/migration-charts/migration-charts
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000
-      serviceAccount: migration-charts
-      serviceAccountName: migration-charts
+      serviceAccount: charts
+      serviceAccountName: charts

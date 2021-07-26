@@ -7,5 +7,5 @@ roleRef:
   name: migration-charts-view
 subjects:
 - kind: ServiceAccount
-  name: migration-charts
+  name: charts
   namespace: migration-charts
