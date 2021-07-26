@@ -155,4 +155,4 @@ ax.relim()
 ax.autoscale_view()
 ax.set_title('Browser market share')
 
-plt.savefig('/app/serve/image-source-chart.png')
+plt.savefig('/app/serve/image-source-chart.pdf')
