@@ -134,7 +134,6 @@ class PathView(MethodView):
                 res = partial_response(path, start, end)
             else:
                 res = send_file(path, mimetype='application/octet-stream', as_attachment=True)
-                res.headers.add('Content-Disposition', 'attachment')
                 res.headers.add('Transfer-Encoding',"identity")
         else:
             res = make_response('Not found', 404)
