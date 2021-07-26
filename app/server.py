@@ -135,7 +135,7 @@ class PathView(MethodView):
                 res = partial_response(path, start, end)
             else:
                 print(p)
-                res = send_from_directory(root, p, as_attachment=True)
+                res = send_from_directory(root, p, as_attachment=True, mimetypes="application/pdf")
                 res.headers.add('Content-Disposition', 'attachment')
                 print("GOT HERE")
                 print(res)
