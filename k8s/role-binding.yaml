@@ -1,0 +1,10 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: migration-chart-binding
+roleRef:
+  kind: ClusterRole
+  name: migration-charts-view
+subjects:
+  kind: ServiceAccount
+  name: migration-charts
