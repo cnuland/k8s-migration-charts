@@ -1,5 +1,4 @@
 from flask import Flask, make_response, request, session, render_template, send_file, Response
-from flask.helpers import send_from_directory
 from flask.views import MethodView
 from werkzeug.utils import secure_filename
 from datetime import datetime
@@ -134,11 +133,8 @@ class PathView(MethodView):
                 start, end = get_range(request)
                 res = partial_response(path, start, end)
             else:
-                print(p)
-                res = send_from_directory(root, p, as_attachment=True, mimetypes="application/pdf")
+                res = send_file(path, mimetype='application/pdf', as_attachment=True)
                 res.headers.add('Content-Disposition', 'attachment')
-                print("GOT HERE")
-                print(res)
         else:
             res = make_response('Not found', 404)
         return res
