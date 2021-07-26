@@ -12,7 +12,7 @@ import sys
 from pathlib2 import Path
 
 app = Flask(__name__, static_url_path='/assets', static_folder='assets')
-root = os.path.normpath("/tmp")
+root = os.path.normpath("/app/serve")
 key = ""
 
 ignored = ['.bzr', '$RECYCLE.BIN', '.DAV', '.DS_Store', '.git', '.hg', '.htaccess', '.htpasswd', '.Spotlight-V100', '.svn', '__MACOSX', 'ehthumbs.db', 'robots.txt', 'Thumbs.db', 'thumbs.tps']
@@ -233,7 +233,7 @@ class PathView(MethodView):
         return res
 
 # Generate the Charts
-directory = "/opt/app-root/src/charts"
+directory = "/app/charts"
 for file in os.listdir(directory):
     filepath = os.path.join(directory, file)
     print("generating chart "+filepath)
@@ -248,6 +248,6 @@ app.add_url_rule('/<path:p>', view_func=path_view)
 if __name__ == '__main__':
     bind = os.getenv('FS_BIND', '0.0.0.0')
     port = os.getenv('FS_PORT', '8000')
-    root = os.path.normpath(os.getenv('FS_PATH', '/tmp'))
+    root = os.path.normpath(os.getenv('FS_PATH', '/app/serve'))
     key = os.getenv('FS_KEY')
     app.run(bind, port, threaded=True, debug=False)
