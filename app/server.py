@@ -233,9 +233,9 @@ class PathView(MethodView):
         return res
 
 # Generate the Charts
-a_directory = "/opt/app-root/charts"
-for filename in os.listdir(a_directory):
-    filepath = os.path.join(a_directory, filename)
+directory = "/opt/app-root/src/charts"
+for file in os.listdir(directory):
+    filepath = os.path.join(directory, file)
     print("generating chart "+filepath)
     exec(open(filepath).read())
 
