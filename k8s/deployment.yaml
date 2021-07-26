@@ -13,7 +13,7 @@ spec:
         app: migration-charts
     spec:
       containers:
-        name: migration-charts
+      - name: migration-charts
         image: migration-charts:latest
         imagePullPolicy: IfNotPresent
         ports:

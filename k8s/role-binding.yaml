@@ -6,5 +6,6 @@ roleRef:
   kind: ClusterRole
   name: migration-charts-view
 subjects:
-  kind: ServiceAccount
+- kind: ServiceAccount
   name: migration-charts
+  namespace: migration-charts
