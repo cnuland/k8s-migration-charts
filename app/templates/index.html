@@ -19,7 +19,6 @@
             {% for part in path.strip('/').split('/') %}
             <li class="breadcrumb-item"><a href="{{url_for('path_view', p='/'+path[:path.find(part)+part|length]+'/')}}"><strong>{{ part }}</strong></a></li>
             {% endfor %}
-             <li class="login"><a data-toggle="modal" data-target="#login-modal" class="btn btn-secondary text-muted"><i class="fa fa-fw fa-user"></i><strong id="userlogin">Login</strong></a></li>
         </ol>
       </div>
       <div class="col-xs-12 col-sm-5 col-md-4 col-sm-offset-7 col-md-offset-8 pull-sm-right">
@@ -30,7 +29,6 @@
       </div>
       <div class="pull-sm-right">
         <div class="btn-group">
-          <a data-toggle="modal" data-target="#uploader-modal" class="btn btn-secondary text-muted">Upload</a>
           {% if hide_dotfile == 'yes' %}
           <a href="?hide-dotfile=no" class="btn btn-secondary text-muted">Show Dotfiles</a>
           {% else %}
