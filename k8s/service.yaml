@@ -4,12 +4,12 @@ metadata:
   name: migration-charts
 spec:
   ports:
-  - name: 8000-tcp
-    port: 8000
+  - name: https
+    port: 443
     protocol: TCP
     targetPort: 8000
   selector:
-    deployment: migration-charts
+    app: migration-charts
   sessionAffinity: None
   type: ClusterIP
 status:
