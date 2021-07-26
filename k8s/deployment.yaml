@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: migration-charts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: migration-charts
+  template:
+    metadata:
+      labels:
+        app: migration-charts
+    spec:
+      containers:
+        name: migration-charts
+        image: migration-charts:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000

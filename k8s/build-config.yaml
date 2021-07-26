@@ -1,0 +1,25 @@
+
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: migration-charts-build
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: migration-charts:latest
+  source:
+    type: Git
+    git: 
+      uri: "https://github.com/cnuland/k8s-migration-charts"
+      ref: "main"
+    contextDir: "app/"
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: openshift/python:3.6-ubi8
+    type: Docker
+  postCommit: {}
+  triggers:
+  - type: ConfigChange
