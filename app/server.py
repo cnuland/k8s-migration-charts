@@ -138,7 +138,7 @@ class PathView(MethodView):
         else:
             res = make_response('Not found', 404)
         return res
-
+    
     def put(self, p=''):
         if request.cookies.get('auth_cookie') == key:
             path = os.path.join(root, p)
@@ -163,7 +163,7 @@ class PathView(MethodView):
             res = make_response(json.JSONEncoder().encode(info), 201)
             res.headers.add('Content-type', 'application/json')
         else:
-            info = {}
+            info = {} 
             info['status'] = 'error'
             info['msg'] = 'Authentication failed'
             res = make_response(json.JSONEncoder().encode(info), 401)
@@ -194,13 +194,13 @@ class PathView(MethodView):
             res = make_response(json.JSONEncoder().encode(info), 200)
             res.headers.add('Content-type', 'application/json')
         else:
-            info = {}
+            info = {} 
             info['status'] = 'error'
             info['msg'] = 'Authentication failed'
             res = make_response(json.JSONEncoder().encode(info), 401)
             res.headers.add('Content-type', 'application/json')
         return res
-
+    
     def delete(self, p=''):
         if request.cookies.get('auth_cookie') == key:
             path = os.path.join(root, p)
@@ -233,9 +233,10 @@ class PathView(MethodView):
         return res
 
 # Generate the Charts
-a_directory = "/app/charts"
+a_directory = "/opt/app-root/charts"
 for filename in os.listdir(a_directory):
     filepath = os.path.join(a_directory, filename)
+    print("generating chart "+filepath)
     exec(open(filepath).read())
 
 # Start Server
