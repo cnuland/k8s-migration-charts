@@ -1,4 +1,17 @@
 apiVersion: v1
-kind: ServiceAccount
+kind: Service
 metadata:
-  name: charts
+  name: migration-charts
+spec:
+  ports:
+  - name: 8000-tcp
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    deployment: migration-charts
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+
