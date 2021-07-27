@@ -29,6 +29,7 @@ if namespaces.status_code != 200:
   print("Failed to get Namespaces: {}".format(namespaces.status_code))
   sys.exit(1)
 print("Checking labels in Groups:")
+print(namespaces["items"])
 for namespace in namespaces["items"]:
   print(namespace["name"])
 
