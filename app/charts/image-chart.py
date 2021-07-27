@@ -30,6 +30,9 @@ if namespaces.status_code != 200:
   print("Failed to get Namespaces: {}".format(namespaces.status_code))
   sys.exit(1)
 print("Checking labels in Groups:")
+print(namespaces.json())
+print("got here2")
+print(namespaces.json()["items"])
 for namespace in json.loads(namespaces.json()["items"]):
   print(json.loads(namespace.json()["name"]))
 
