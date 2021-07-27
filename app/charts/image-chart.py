@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import subprocess
 import requests
 import sys
+import json
 
 session = requests.Session()
 session.verify = False
@@ -29,9 +30,8 @@ if namespaces.status_code != 200:
   print("Failed to get Namespaces: {}".format(namespaces.status_code))
   sys.exit(1)
 print("Checking labels in Groups:")
-print(namespaces["items"])
-for namespace in namespaces["items"]:
-  print(namespace["name"])
+for namespace in json.loads(namespaces.json()["items"]):
+  print(json.loads(namespace.json()["name"])
 
 browser_market_share = {
     'browsers': ['firefox', 'chrome', 'safari', 'edge', 'ie', 'opera'],
