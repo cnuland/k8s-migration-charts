@@ -1,5 +1,38 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import subprocess
+import os
+import json
+import requests
+import sys
+
+session = requests.Session()
+session.verify = False
+session.headers = {
+    'Accept': 'application/json',
+}
+
+def bash_command(cmd): 
+  ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
+  return ps.communicate()[0]
+
+token = bash_command("cat /var/run/secrets/kubernetes.io/serviceaccount/token")
+if token is not None:
+  session.headers['Authorization'] = 'Bearer {0}'.format(token)
+
+# URL Base
+base_url = "https://kubernetes.default.svc.cluster.local/api/v1"
+users_base_url = "https://kubernetes.default.svc.cluster.local/api/user.openshift.io/v1"
+namespace = bash_command("cat /var/run/secrets/kubernetes.io/serviceaccount/namespace")
+namespaces = session.get(base_url + "/namespaces")
+namespaces.raise_for_status()
+
+if namespaces.status_code != 200:
+  print("Failed to get Namespaces: {}".format(namespaces.status_code))
+  sys.exit(1)
+print("Checking labels in Groups:")
+for namespace in namespaces:
+  print(namespace)
 
 browser_market_share = {
     'browsers': ['firefox', 'chrome', 'safari', 'edge', 'ie', 'opera'],
