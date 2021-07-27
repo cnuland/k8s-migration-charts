@@ -1,8 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import subprocess
-import os
-import json
 import requests
 import sys
 

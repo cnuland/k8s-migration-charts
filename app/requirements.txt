@@ -3,3 +3,4 @@ humanize
 pathlib2
 numpy
 matplotlib
+requests
