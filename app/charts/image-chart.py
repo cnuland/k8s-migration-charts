@@ -42,7 +42,7 @@ for namespace in namespaces.json()["items"]:
     for build in builds.json()["items"]:
       image_src = build["spec"]["strategy"]["dockerStrategy"]["from"]["name"]
       image = re.search("((([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]))", image_src)
-      print(image_src)
+      print(image)
 
 
 browser_market_share = {
