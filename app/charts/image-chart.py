@@ -6,6 +6,7 @@ import sys
 import json
 import re
 from collections import Counter
+from random import random
 
 session = requests.Session()
 session.verify = False
@@ -21,6 +22,7 @@ token = bash_command("cat /var/run/secrets/kubernetes.io/serviceaccount/token")
 if token is not None:
   session.headers['Authorization'] = 'Bearer {0}'.format(token)
 
+colors_ = lambda n: list(map(lambda i: "#" + "%06x" % random.randint(0, 0xFFFFFF),range(n)))
 images = []
 
 # URL Base
@@ -51,7 +53,7 @@ count = Counter(images).most_common()
 browser_market_share = {
     'browsers': [key for key, _ in count],
     'market_share': [float(value) for _, value in count],
-    'color': ['#5A69AF', '#5A69AF']
+    'color': colors_(len(count))
 }
 
 print(browser_market_share)
