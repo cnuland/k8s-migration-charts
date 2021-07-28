@@ -33,7 +33,7 @@ print("Checking labels in Groups:")
 for namespace in namespaces.json()["items"]:
   namespace_name = namespace["metadata"]["name"]
   if not namespace_name.startswith("openshift") and not namespace_name.startswith("kube") and not namespace_name.startswith("default"):
-    deployments = session.get(base_url + "/namespaces/{}/deployments".format(namespace_name))
+    deployments = session.get("https://kubernetes.default.svc.cluster.local/apis/apps/v1/namespaces/{}/deployments".format(namespace_name))
     deployments.raise_for_status()
     if deployments.status_code != 200:
       print("Failed to get deployments for namespace: {}".format(namespace_name))
