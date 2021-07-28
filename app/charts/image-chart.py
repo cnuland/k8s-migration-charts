@@ -5,6 +5,7 @@ import requests
 import sys
 import json
 import re
+from collections import Counter
 
 session = requests.Session()
 session.verify = False
@@ -19,6 +20,8 @@ def bash_command(cmd):
 token = bash_command("cat /var/run/secrets/kubernetes.io/serviceaccount/token")
 if token is not None:
   session.headers['Authorization'] = 'Bearer {0}'.format(token)
+
+images = []
 
 # URL Base
 base_url = "https://kubernetes.default.svc.cluster.local/api/v1"
@@ -42,9 +45,10 @@ for namespace in namespaces.json()["items"]:
     for build in builds.json()["items"]:
       image_src = build["spec"]["strategy"]["dockerStrategy"]["from"]["name"]
       image = re.search("^(?:(?=[^:\/]{1,253})(?!-)[a-zA-Z0-9-]{1,63}(?<!-)(?:\.(?!-)[a-zA-Z0-9-]{1,63}(?<!-))*(?::[0-9]{1,5})?/)?((?![._-])(?:[a-z0-9._-]*)(?<![._-])(?:/(?![._-])[a-z0-9._-]*(?<![._-]))*)(?::(?![.-])[a-zA-Z0-9_.-]{1,128})?$", image_src).group(1)
-      print(image_src)
-      print(image)
-
+      images.append(image)
+      
+count = Counter(images)
+print(count)
 
 browser_market_share = {
     'browsers': ['firefox', 'chrome', 'safari', 'edge', 'ie', 'opera'],
