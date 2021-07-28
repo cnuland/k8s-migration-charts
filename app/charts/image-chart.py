@@ -187,7 +187,7 @@ class BubbleChart:
             circ = plt.Circle(
                 self.bubbles[i, :2], self.bubbles[i, 2], color=colors[i])
             ax.add_patch(circ)
-            ax.text(*self.bubbles[i, :2], labels[i] + "\n" + browser_market_share['browsers'][i] ,
+            ax.text(*self.bubbles[i, :2], labels[i] + "\n" + browser_market_share['market_share'][i] ,
                     horizontalalignment='center', verticalalignment='center')
 
 
