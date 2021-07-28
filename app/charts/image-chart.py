@@ -4,6 +4,7 @@ import subprocess
 import requests
 import sys
 import json
+import re
 
 session = requests.Session()
 session.verify = False
@@ -39,8 +40,8 @@ for namespace in namespaces.json()["items"]:
       print("Failed to get builds for namespace: {}".format(namespace_name))
       continue
     for build in builds.json()["items"]:
-      print(build)
       image_src = build["spec"]["strategy"]["dockerStrategy"]["from"]["name"]
+      image = re.search("^(?:(?=[^:\/]{1,253})(?!-)[a-zA-Z0-9-]{1,63}(?<!-)(?:\.(?!-)[a-zA-Z0-9-]{1,63}(?<!-))*(?::[0-9]{1,5})?/)?((?![._-])(?:[a-z0-9._-]*)(?<![._-])(?:/(?![._-])[a-z0-9._-]*(?<![._-]))*)(?::(?![.-])[a-zA-Z0-9_.-]{1,128})?$", image_src)
       print(image_src)
 
 
