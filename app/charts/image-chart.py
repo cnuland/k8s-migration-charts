@@ -48,12 +48,11 @@ for namespace in namespaces.json()["items"]:
       images.append(image)
       
 count = Counter(images)
-print(count)
-
+list1, list2 = zip(*count)
 browser_market_share = {
-    'browsers': ['firefox', 'chrome', 'safari', 'edge', 'ie', 'opera'],
-    'market_share': [8.61, 69.55, 8.36, 4.12, 2.76, 2.43],
-    'color': ['#5A69AF', '#579E65', '#F9C784', '#FC944A', '#F24C00', '#00B825']
+    'browsers': list1,
+    'market_share': list2,
+    'color': ['#5A69AF']
 }
 
 
