@@ -41,7 +41,8 @@ for namespace in namespaces.json()["items"]:
       continue
     for build in builds.json()["items"]:
       image_src = build["spec"]["strategy"]["dockerStrategy"]["from"]["name"]
-      image = re.search("(?:[a-z]+/)?([a-z]+)(?::[0-9]+)?", image_src)
+      image = re.search("(?:[a-z]+/)?([a-z]+)(?::[0-9]+)?", image_src).group(1)
+      print(image_src)
       print(image)
 
 
