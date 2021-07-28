@@ -48,16 +48,13 @@ for namespace in namespaces.json()["items"]:
       images.append(image)
       
 count = Counter(images).most_common()
-list1, list2 = zip(*count)
-print(list1)
-print(list2)
-
 browser_market_share = {
-    'browsers': list1,
-    'market_share': list2,
+    'browsers': [key for key, _ in count.most_common()],
+    'market_share': [value for _, value in count.most_common()],
     'color': ['#5A69AF']
 }
 
+print(browser_market_share)
 
 class BubbleChart:
     def __init__(self, area, bubble_spacing=0):
