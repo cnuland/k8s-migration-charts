@@ -33,15 +33,15 @@ print("Checking labels in Groups:")
 for namespace in namespaces.json()["items"]:
   namespace_name = namespace["metadata"]["name"]
   if not namespace_name.startswith("openshift") and not namespace_name.startswith("kube") and not namespace_name.startswith("default"):
-    deployments = session.get("https://kubernetes.default.svc.cluster.local/apis/apps/v1/namespaces/{}/deployments".format(namespace_name))
-    deployments.raise_for_status()
-    if deployments.status_code != 200:
-      print("Failed to get deployments for namespace: {}".format(namespace_name))
+    builds = session.get("https://kubernetes.default.svc.cluster.local/apis/build.openshift.io/namespaces/{}/buildconfig".format(namespace_name))
+    builds.raise_for_status()
+    if builds.status_code != 200:
+      print("Failed to get builds for namespace: {}".format(namespace_name))
       continue
-    for deployment in deployments.json()["items"]:
-      containers = deployment["spec"]["template"]["spec"]["containers"]
-      for container in containers:
-        print(container)
+    for build in builds.json()["items"]:
+      print(build)
+      image_src = build["spec"]["strategy"]["dockerStrategy"]["from"]["name"]
+      print(image_src)
 
 
 browser_market_share = {
