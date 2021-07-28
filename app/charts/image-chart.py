@@ -47,14 +47,12 @@ for namespace in namespaces.json()["items"]:
       image = re.search("^(?:(?=[^:\/]{1,253})(?!-)[a-zA-Z0-9-]{1,63}(?<!-)(?:\.(?!-)[a-zA-Z0-9-]{1,63}(?<!-))*(?::[0-9]{1,5})?/)?((?![._-])(?:[a-z0-9._-]*)(?<![._-])(?:/(?![._-])[a-z0-9._-]*(?<![._-]))*)(?::(?![.-])[a-zA-Z0-9_.-]{1,128})?$", image_src).group(1)
       images.append(image)
       
-count = Counter(images).most_common()
 browser_market_share = {
-    'browsers': [key for key, _ in count],
-    'market_share': [int(value) for _, value in count],
-    'color': ['#5A69AF']
+    'browsers': ['firefox', 'chrome', 'safari', 'edge', 'ie', 'opera'],
+    'market_share': [8.61, 69.55, 8.36, 4.12, 2.76, 2.43],
+    'color': ['#5A69AF', '#579E65', '#F9C784', '#FC944A', '#F24C00', '#00B825']
 }
 
-print(browser_market_share)
 
 class BubbleChart:
     def __init__(self, area, bubble_spacing=0):
