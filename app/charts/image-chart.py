@@ -47,7 +47,7 @@ for namespace in namespaces.json()["items"]:
       image = re.search("^(?:(?=[^:\/]{1,253})(?!-)[a-zA-Z0-9-]{1,63}(?<!-)(?:\.(?!-)[a-zA-Z0-9-]{1,63}(?<!-))*(?::[0-9]{1,5})?/)?((?![._-])(?:[a-z0-9._-]*)(?<![._-])(?:/(?![._-])[a-z0-9._-]*(?<![._-]))*)(?::(?![.-])[a-zA-Z0-9_.-]{1,128})?$", image_src).group(1)
       images.append(image)
       
-count = Counter(images)
+count = Counter(images).most_common()
 print(count)
 list1, list2 = zip(*count)
 browser_market_share = {
