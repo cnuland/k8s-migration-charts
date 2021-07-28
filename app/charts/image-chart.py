@@ -31,7 +31,16 @@ if namespaces.status_code != 200:
   sys.exit(1)
 print("Checking labels in Groups:")
 for namespace in namespaces.json()["items"]:
-  print(namespace["metadata"]["name"])
+  namespace_name = namespace["metadata"]["name"]
+  if not namespace_name.startswith("openshift") and not namespace_name.startswith("kube") and not namespace_name.startswith("default"):
+    deployments = session.get(base_url + "/namespaces/{}/deployments".format(namespace_name))
+    deployments.raise_for_status()
+    if deployments.status_code != 200:
+      print("Failed to get deployments for namespace: {}".format(namespace_name))
+      continue
+    for deployment in deployments.json()["items"]:
+      print(deployment)
+
 
 browser_market_share = {
     'browsers': ['firefox', 'chrome', 'safari', 'edge', 'ie', 'opera'],
