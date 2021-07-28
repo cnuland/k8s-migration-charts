@@ -6,7 +6,7 @@ import sys
 import json
 import re
 from collections import Counter
-from random import random
+from random import randint
 
 session = requests.Session()
 session.verify = False
@@ -22,7 +22,7 @@ token = bash_command("cat /var/run/secrets/kubernetes.io/serviceaccount/token")
 if token is not None:
   session.headers['Authorization'] = 'Bearer {0}'.format(token)
 
-colors_ = lambda n: list(map(lambda i: "#" + "%06x" % random.randint(0, 0xFFFFFF),range(n)))
+colors_ = lambda n: list(map(lambda i: "#" + "%06x" % randint(0, 0xFFFFFF),range(n)))
 images = []
 
 # URL Base
