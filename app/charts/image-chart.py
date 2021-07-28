@@ -49,8 +49,8 @@ for namespace in namespaces.json()["items"]:
       
 count = Counter(images).most_common()
 browser_market_share = {
-    'browsers': [key for key, _ in count.most_common()],
-    'market_share': [value for _, value in count.most_common()],
+    'browsers': [key for key, _ in count],
+    'market_share': [value for _, value in count],
     'color': ['#5A69AF']
 }
 
