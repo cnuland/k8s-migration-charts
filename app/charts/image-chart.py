@@ -39,7 +39,9 @@ for namespace in namespaces.json()["items"]:
       print("Failed to get deployments for namespace: {}".format(namespace_name))
       continue
     for deployment in deployments.json()["items"]:
-      print(deployment)
+      containers = deployment["spec"]["template"]["spec"]["containers"]
+      for container in containers:
+        print(container)
 
 
 browser_market_share = {
