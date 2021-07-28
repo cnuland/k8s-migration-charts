@@ -187,7 +187,7 @@ class BubbleChart:
             circ = plt.Circle(
                 self.bubbles[i, :2], self.bubbles[i, 2], color=colors[i])
             ax.add_patch(circ)
-            ax.text(*self.bubbles[i, :2], labels[i],
+            ax.text(*self.bubbles[i, :2], labels[i]+ " test",
                     horizontalalignment='center', verticalalignment='center')
 
 
@@ -202,6 +202,6 @@ bubble_chart.plot(
 ax.axis("off")
 ax.relim()
 ax.autoscale_view()
-ax.set_title('Browser market share')
+ax.set_title('Base Images')
 
 plt.savefig('/app/serve/image-source-chart.png')
