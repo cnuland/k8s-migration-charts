@@ -31,7 +31,7 @@ if namespaces.status_code != 200:
   sys.exit(1)
 print("Checking labels in Groups:")
 for namespace in namespaces.json()["items"]:
-  print(namespace["metadata"].name)
+  print(namespace["metadata"]["name"])
 
 browser_market_share = {
     'browsers': ['firefox', 'chrome', 'safari', 'edge', 'ie', 'opera'],
