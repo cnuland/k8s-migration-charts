@@ -33,7 +33,7 @@ print("Checking labels in Groups:")
 for namespace in namespaces.json()["items"]:
   namespace_name = namespace["metadata"]["name"]
   if not namespace_name.startswith("openshift") and not namespace_name.startswith("kube") and not namespace_name.startswith("default"):
-    builds = session.get("https://kubernetes.default.svc.cluster.local/apis/build.openshift.io/namespaces/{}/buildconfigs".format(namespace_name))
+    builds = session.get("https://kubernetes.default.svc.cluster.local/apis/build.openshift.io/v1/namespaces/{}/buildconfigs".format(namespace_name))
     builds.raise_for_status()
     if builds.status_code != 200:
       print("Failed to get builds for namespace: {}".format(namespace_name))
