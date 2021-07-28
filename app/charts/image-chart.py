@@ -178,7 +178,7 @@ class BubbleChart:
         Parameters
         ----------
         ax : matplotlib.axes.Axes
-        labels : list
+        labels : lists
             Labels of the bubbles.
         colors : list
             Colors of the bubbles.
@@ -187,7 +187,7 @@ class BubbleChart:
             circ = plt.Circle(
                 self.bubbles[i, :2], self.bubbles[i, 2], color=colors[i])
             ax.add_patch(circ)
-            ax.text(*self.bubbles[i, :2], labels[i]+ " test",
+            ax.text(*self.bubbles[i, :2], labels[i] + "\n" + self.bubbles[i, :2] ,
                     horizontalalignment='center', verticalalignment='center')
 
 
