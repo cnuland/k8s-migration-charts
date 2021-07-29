@@ -4,7 +4,7 @@ metadata:
   name: migration-chart-binding
 roleRef:
   kind: ClusterRole
-  name: migration-charts-view
+  name: migration-chart-view
 subjects:
 - kind: ServiceAccount
   name: charts
