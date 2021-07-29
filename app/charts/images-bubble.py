@@ -197,7 +197,7 @@ bubble_chart.collapse()
 
 fig, ax = plt.subplots(subplot_kw=dict(aspect="equal"))
 bubble_chart.plot(
-    ax, data['values'], data['color'])
+    ax, data['titles'], data['color'])
 ax.axis("off")
 ax.relim()
 ax.autoscale_view()
