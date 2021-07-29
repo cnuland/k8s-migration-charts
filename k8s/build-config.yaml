@@ -3,6 +3,7 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   name: migration-charts-build
+  namespace: migration-charts
 spec:
   output:
     to:
