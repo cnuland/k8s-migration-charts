@@ -1,0 +1,20 @@
+# OCP Advanced Analytics Tool
+This tool is meant to be used to generate advanced analytics in the form of graphs to help evaluate OpenShift based k8s clusters.
+Using a simple python container this tool generates the graphs then serves those graphs using a flask webserver within the container. Use `oc expose` to get external access from the cluster.
+
+Use cases:
+- Migration preparations
+- Healthcheck evaulations
+- General cluster metrics (Not meant as a replacement for Prometheus)
+
+## Current features
+- OCP `BuildConfig` source image stats (Pi and Bubble Charts)
+
+## Installation
+```
+# Install using kustomize
+oc apply -k deploy/overlay/app/
+
+# Expose HTTPS Web Server
+oc expose svc/adv-analytics
+## Use Cases 

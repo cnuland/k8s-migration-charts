@@ -1,11 +1,11 @@
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: migration-chart-binding
+  name: adv-analytics-binding
 roleRef:
   kind: ClusterRole
-  name: migration-chart-view
+  name: adv-analytics-view
 subjects:
 - kind: ServiceAccount
-  name: charts
-  namespace: migration-charts
+  name: adv-analytics
+  namespace: adv-analytics

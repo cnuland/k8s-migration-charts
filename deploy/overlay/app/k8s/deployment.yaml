@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: migration-charts
-  namespace: migration-charts
+  name: adv-analytics
+  namespace: adv-analytics
   labels:
-    app: migration-charts
+    app: adv-analytics
   annotations:
-    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"migration-charts:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"migration-charts\")].image"}]'
+    image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"adv-analytics:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"adv-analytics\")].image"}]'
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: migration-charts
+      app: adv-analytics
   template:
     metadata:
       labels:
-        app: migration-charts
+        app: adv-analytics
     spec:
       containers:
-      - name: migration-charts
-        image: image-registry.openshift-image-registry.svc:5000/migration-charts/migration-charts
+      - name: adv-analytics
+        image: image-registry.openshift-image-registry.svc:5000/adv-analytics/adv-analytics
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000
-      serviceAccount: charts
-      serviceAccountName: charts
+      serviceAccount: adv-analytics
+      serviceAccountName: adv-analytics

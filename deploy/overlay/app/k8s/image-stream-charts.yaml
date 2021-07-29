@@ -1,6 +1,6 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: migration-charts
-  namespace: migration-charts
+  name: adv-analytics
+  namespace: adv-analytics
 spec:

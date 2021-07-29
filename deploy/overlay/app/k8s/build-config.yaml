@@ -2,17 +2,17 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: migration-charts-build
-  namespace: migration-charts
+  name: adv-analytics-build
+  namespace: adv-analytics
 spec:
   output:
     to:
       kind: ImageStreamTag
-      name: migration-charts:latest
+      name: adv-analytics:latest
   source:
     type: Git
     git: 
-      uri: "https://github.com/cnuland/k8s-migration-charts"
+      uri: "https://github.com/cnuland/adv-analytics"
       ref: "main"
     contextDir: "app/"
   strategy:
