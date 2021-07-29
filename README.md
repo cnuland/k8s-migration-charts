@@ -26,6 +26,8 @@ Go to the HTTPS hostname provided by the route generated to see the content
 adv-analytics-adv-analytics.apps.<cluster-name>.<base-domain>
 
 wget also can be used to retreive content
+```
 wget https://adv-analytics-adv-analytics.apps.<cluster-name>.<base-domain>/image-pi.png
 wget https://adv-analytics-adv-analytics.apps.<cluster-name>.<base-domain>/image-bubble.png
+```
 
