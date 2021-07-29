@@ -12,7 +12,7 @@ spec:
   source:
     type: Git
     git: 
-      uri: "https://github.com/cnuland/k8s-migration-charts"
+      uri: "https://github.com/cnuland/ocp-adv-analytics"
       ref: "main"
     contextDir: "app/"
   strategy:
