@@ -50,13 +50,12 @@ for namespace in namespaces.json()["items"]:
       images.append(image)
       
 count = Counter(images).most_common()
-browser_market_share = {
-    'browsers': [key for key, _ in count],
-    'market_share': [float(value) for _, value in count],
+data = {
+    'titles': [key for key, _ in count],
+    'data': [float(value) for _, value in count],
     'color': colors_(len(count))
 }
 
-print(browser_market_share)
 class BubbleChart:
     def __init__(self, area, bubble_spacing=0):
         """
@@ -187,18 +186,18 @@ class BubbleChart:
             circ = plt.Circle(
                 self.bubbles[i, :2], self.bubbles[i, 2], color=colors[i])
             ax.add_patch(circ)
-            ax.text(*self.bubbles[i, :2], labels[i] + "\n" + str(int(browser_market_share['market_share'][i])) ,
+            ax.text(*self.bubbles[i, :2], labels[i] + "\n" + str(int(data['data'][i])) ,
                     horizontalalignment='center', verticalalignment='center')
 
 
-bubble_chart = BubbleChart(area=browser_market_share['market_share'],
+bubble_chart = BubbleChart(area=data['market_share'],
                            bubble_spacing=0.1)
 
 bubble_chart.collapse()
 
 fig, ax = plt.subplots(subplot_kw=dict(aspect="equal"))
 bubble_chart.plot(
-    ax, browser_market_share['browsers'], browser_market_share['color'])
+    ax, data['data'], data['color'])
 ax.axis("off")
 ax.relim()
 ax.autoscale_view()

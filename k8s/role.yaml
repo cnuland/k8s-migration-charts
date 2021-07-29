@@ -10,11 +10,12 @@ rules:
   verbs:
   - get
   - list
+  - watch
 - apiGroups:
   - ""
   resources:
-  - namespaces
-  - deployments
+  - "*"
   verbs:
   - get
   - list
+  - watch

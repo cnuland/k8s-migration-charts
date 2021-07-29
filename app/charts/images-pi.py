@@ -50,15 +50,15 @@ for namespace in namespaces.json()["items"]:
       images.append(image)
       
 count = Counter(images).most_common()
-browser_market_share = {
-    'browsers': [key for key, _ in count],
-    'market_share': [float(value) for _, value in count],
+data = {
+    'titles': [key for key, _ in count],
+    'data': [float(value) for _, value in count],
     'color': colors_(len(count))
 }
 
 
 # Creating plot
 fig = plt.figure(figsize =(10, 7))
-plt.pie(browser_market_share["market_share"], labels = browser_market_share["browsers"])
+plt.pie(data["data"], labels = data["titles"])
 
 plt.savefig('/app/serve/image-pi.png')
