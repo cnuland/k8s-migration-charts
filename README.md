@@ -12,7 +12,7 @@ Use cases:
 
 ![Bubble Chart](images/images-bubble.png "Bubble Chart")
 
-![Pi Graph ](image/images-pi.png "Pi Graph")
+![Pi Graph ](images/image-pi.png "Pi Graph")
 
 
 ## Installation
