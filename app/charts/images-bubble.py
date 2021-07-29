@@ -190,7 +190,7 @@ class BubbleChart:
                     horizontalalignment='center', verticalalignment='center')
 
 
-bubble_chart = BubbleChart(area=data['market_share'],
+bubble_chart = BubbleChart(area=data['data'],
                            bubble_spacing=0.1)
 
 bubble_chart.collapse()
