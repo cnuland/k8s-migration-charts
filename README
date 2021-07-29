@@ -8,7 +8,7 @@ Use cases:
 - General cluster metrics (Not meant as a replacement for Prometheus)
 
 ## Current features
-- OCP `BuildConfig` source image stats (Pi and Bubble Charts)
+- OCP `BuildConfig` source image stats and shows the top 20 used images (Pi and Bubble Charts)
 
 ## Installation
 ```

@@ -35,7 +35,6 @@ namespaces.raise_for_status()
 if namespaces.status_code != 200:
   print("Failed to get Namespaces: {}".format(namespaces.status_code))
   sys.exit(1)
-print("Checking labels in Groups:")
 for namespace in namespaces.json()["items"]:
   namespace_name = namespace["metadata"]["name"]
   if not namespace_name.startswith("openshift") and not namespace_name.startswith("kube") and not namespace_name.startswith("default"):
@@ -50,6 +49,8 @@ for namespace in namespaces.json()["items"]:
       images.append(image)
       
 count = Counter(images).most_common()
+count = count[:20]
+
 data = {
     'titles': [key for key, _ in count],
     'data': [float(value) for _, value in count],
@@ -201,6 +202,6 @@ bubble_chart.plot(
 ax.axis("off")
 ax.relim()
 ax.autoscale_view()
-ax.set_title('Base Images')
+ax.set_title('Base Images (Top 20)')
 
 plt.savefig('/app/serve/images-bubble.png')

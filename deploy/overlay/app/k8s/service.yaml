@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: adv-analytics
   namespace: adv-analytics
+spec:
   ports:
   - name: https
     port: 443
