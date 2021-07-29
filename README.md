@@ -10,6 +10,11 @@ Use cases:
 ## Current features
 - OCP `BuildConfig` source image stats and shows the top 20 used images (Pi and Bubble Charts)
 
+![Bubble Chart](https://github.com/cnuland/ocp-adv-analytics/raw/master/images/images-bubble.png "Bubble Chart")
+
+![Pi Graph ](https://github.com/cnuland/ocp-adv-analytics/raw/master/images/images-pi.png "Pi Graph")
+
+
 ## Installation
 ```
 # Install using kustomize
